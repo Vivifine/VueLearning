@@ -1,0 +1,45 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Learn about Vue</title>
+        <!--Firstly, Import the Vue-->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <component_test></component_test>
+        </div>
+        
+        
+        <script type="text/javascript">
+          
+          
+          Vue.component('component_test',{
+              template:`
+              <div>
+              <div id='tt' v-text="info"></div>
+              <h1>Part:<span>{{numb}}</span></h1>
+            <button @click="increase">Up</button></div>`
+            ,
+              data(){
+                  return{
+                    info: 'This is about component',
+                  numb:1
+                  }
+                  
+              },
+              methods:{
+                  increase(){
+                      this.numb++;
+                  }
+              }
+          })
+        
+            const app = new Vue({
+                el:'#app'
+            })
+        </script>
+
+    </body>
+</html>
+
