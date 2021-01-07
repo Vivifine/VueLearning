@@ -7,12 +7,20 @@
     </head>
     <body>
         <div id="app">
-            <component_test></component_test>
+            <component_test :premium="vip"></component_test> <!-- Vip is the data from parent vue app-->
+            <component_test :premium="vip"></component_test> <!--Premiium is the custom-specified attribute, and need to be stated in props of component-->
+            
         </div>
         
         
         <script type="text/javascript">                    
           Vue.component('component_test',{
+              props:{
+                premium:{
+                    type:Boolean,
+                    required:true
+                }
+              },
               template:`
               <div>
               <div id='tt' v-text="info"></div>
@@ -20,16 +28,19 @@
               <h2>Price:<span>{{Price}}</span></h2>
               <button @click="increase">Next Stage</button>
               <h1>Total:<span>{{Total}}</span></h1>
+              <h2>Premium:<span>{{premium}}</span></h2>
               </div>`
             ,
               data(){
                   return{
                     info: 'This is about component',
                     numb:1,
-                    Price:1
+                    Price:1,
+                    
                   };
-                  
+                 
               },
+              
               methods:{
                   increase(){                   
                       this.numb++;
@@ -44,10 +55,12 @@
           })
 
             const app = new Vue({
-                el:'#app'
+                el:'#app',
+                data:{
+                    vip:true
+                }
             })
         </script>
 
     </body>
 </html>
-
