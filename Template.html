@@ -11,30 +11,38 @@
         </div>
         
         
-        <script type="text/javascript">
-          
-          
+        <script type="text/javascript">                    
           Vue.component('component_test',{
               template:`
               <div>
               <div id='tt' v-text="info"></div>
-              <h1>Part:<span>{{numb}}</span></h1>
-            <button @click="increase">Up</button></div>`
+              <h1>No:<span>{{numb}}</span></h1>
+              <h2>Price:<span>{{Price}}</span></h2>
+              <button @click="increase">Next Stage</button>
+              <h1>Total:<span>{{Total}}</span></h1>
+              </div>`
             ,
               data(){
                   return{
                     info: 'This is about component',
-                  numb:1
-                  }
+                    numb:1,
+                    Price:1
+                  };
                   
               },
               methods:{
-                  increase(){
+                  increase(){                   
                       this.numb++;
+                      this.Price++;
                   }
+              },
+              computed:{
+                    Total(){
+                        return this.Price*this.numb;
+                    }
               }
           })
-        
+
             const app = new Vue({
                 el:'#app'
             })
